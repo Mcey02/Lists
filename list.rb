@@ -143,30 +143,37 @@ def either_2_4(list)
     return false
 end
 
-numbers = [2, 4, 4, 5, 6, 1, 2]
+numbers = [2, 3, 2, 5, 6, 1, 2, 3]
 
 # puts either_2_4(numbers)
 
 def max_span(list)
-    i = 0
     first = 0
     last = 0
     size = 0
+    finallist = []
+    newlist = []
+    i = 0
+    n = 0
     list.each do |number|
-        first = number
+        first = i
+        n = 0
         list.each do |numb|
             if number == numb
-                last = numb
+                last = n
             end
+            n += 1
         end
-        newlist = list[first..last]
-        
-        if size
-            size = newlist.size
-
+        listsize = last - first
+        if size < listsize
+            size = listsize
+        end
+        i += 1
     end
+    return size - 1
 end
 
+puts max_span(numbers)
 
 def g_happy(string)
     i = 0
