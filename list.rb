@@ -173,7 +173,7 @@ def max_span(list)
     return size - 1
 end
 
-puts max_span(numbers)
+# puts max_span(numbers)
 
 def g_happy(string)
     i = 0
@@ -205,3 +205,34 @@ def g_happy(string)
 end
 
 # puts g_happy("jhkhkhkjnjkbggnkjnjknjkgggnnlknln")
+
+def merge(list1, list2)
+    n = 0
+    k = 0
+    list1end = list1.size - 1
+    list2end = list2.size - 1
+    size = list1.size + list2.size
+    newlist =[]
+    size.times do
+        if list1[n] < list2[k]
+            newlist.push(list1[n])
+            n +=1
+            if n > list1end
+                newlist.push(list2[k..(list2.size -1)])
+                return newlist
+            end
+        else
+            newlist.push(list2[k])
+            k +=1
+            if k > list2end
+                newlist.push(list1[n..(list1.size -1)])
+                return newlist
+            end
+        end
+    end
+end
+
+numbers1 = [1, 2, 8]
+numbers2 = [4, 9, 10]
+
+puts merge(numbers1, numbers2)
