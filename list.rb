@@ -69,7 +69,7 @@ def shift_left(list)
     return list
 end
 
-numbs = [5, 5]
+numbs = [5, 3, 2]
 
 # puts shift_left(numbs)
 
@@ -77,16 +77,16 @@ numbs = [5, 5]
 def can_balance(list)
     firsthalf = []
     secondhalf = []
-    (list.size - 1).times do |x|
+    (list.size).times do |x|
         add1 = 0
         add2 = 0
         firsthalf = list[0, x]
         secondhalf = list[(x), (list.size - 1)]
         firsthalf.each do |num|
-            add1 = add1 + num
+            add1 += num
         end
         secondhalf.each do |num1|
-            add2 = add2 + num1
+            add2 += num1
         end
         if add1 == add2
             return true
@@ -95,7 +95,7 @@ def can_balance(list)
     return false
 end
 
-# puts can_balance(numbs)
+puts can_balance(numbs)
 
 def count_code(string)
     count = 0
@@ -218,21 +218,29 @@ def merge(list1, list2)
             newlist.push(list1[n])
             n +=1
             if n > list1end
-                newlist.push(list2[k..(list2.size -1)])
+                z = list2end - k + 2
+                z.times do
+                    newlist.push(list2[k])
+                    k += 1
+                end
                 return newlist
             end
         else
             newlist.push(list2[k])
             k +=1
             if k > list2end
-                newlist.push(list1[n..(list1.size -1)])
+                y = list1end - n + 2
+                y.times do
+                    newlist.push(list1[n])
+                    n += 1
+                end
                 return newlist
             end
         end
     end
 end
 
-numbers1 = [1, 2, 8]
-numbers2 = [4, 9, 10]
+numbers1 = [1, 2, 8, 11, 14]
+numbers2 = [2, 9, 10]
 
-puts merge(numbers1, numbers2)
+# puts merge(numbers1, numbers2)
